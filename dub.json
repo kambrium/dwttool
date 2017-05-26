@@ -1,0 +1,12 @@
+{
+	"name": "dwttool",
+	"authors": [
+		"Martin Muehlbauer"
+	],
+	"description": "A tool to manage websites based on Dynamic Web Templates",
+	"copyright": "Copyright © 2017, Martin Muehlbauer",
+	"license": "MIT",
+	"dependencies": {
+		"vibe-d": "~>0.8.0-beta.5"
+	}
+}
