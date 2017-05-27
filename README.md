@@ -21,14 +21,14 @@ export PATH=$PATH:/this/is/your/dwttool/path/
 Getting started
 ---------------
 ```shell
-// Let's create a new project
+// Create new project
 $ dwttool create project my_cool_website
 $ cd my_cool_website
-// Edit the template
+// Edit template
 $ vim master.dwt
 // Create new HTML file from template
 $ dwttool create page index.html master.dwt
-// Run the server on port 50000
+// Run server on port 50000
 $ dwttool serve
 ```
 
