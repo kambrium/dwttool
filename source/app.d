@@ -19,7 +19,6 @@ private
 
     enum invalidArgumentError = "ERROR: No or invalid argument(s) given. Enter 'dwttool help' for help.";
     enum invalidAmountError = "ERROR: Invalid amount of arguments given. Enter 'dwttool help' for help.";
-    enum invalidTypeError = "ERROR: Port must be a number.";
     enum missingTemplateError = "ERROR: Could not find template '%s'.";
     enum createProjectError = "ERROR: %s already exists. Try another name.";
     enum createFileError = "ERROR: Could not create file %s from template %s.";
