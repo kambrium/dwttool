@@ -117,6 +117,17 @@ private void main(string[] args)
                     writeln(invalidAmountError);
                     break;
                 }
+            case "version":
+                if (args.length == 2)
+                {
+                    getVersion;
+                    break;
+                }
+                else
+                {
+                    writeln(invalidAmountError);
+                    break;
+                }
             case "help":
                 if (args.length == 2)
                 {
@@ -249,7 +260,7 @@ private int serveProject()
 
 private void showHelp()
 {
-    writeln(format("dwttool - A tool to manage websites based on Dynamic Web Templates - Version %s", ver));
+    writeln("dwttool - A tool to manage websites based on Dynamic Web Templates");
     writeln("");
     writeln("Usage:");
     writeln("  dwttool create project <project>       Create new dwttool project");
@@ -257,6 +268,7 @@ private void showHelp()
     writeln("  dwttool update project <template>      Update dwttool project");
     writeln("  dwttool update page <page> <template>  Update dwttool page");
     writeln("  dwttool serve                          Serve dwttool project on port 50000");
+    writeln("  dwttool version                        Get dwttool version");
     writeln("  dwttool help                           Read this text");
 }
 
@@ -264,4 +276,9 @@ private void exitDwttool()
 {
     writeln("Exiting...");
     exit(0);
+}
+
+private void getVersion()
+{
+    writeln(ver);
 }
