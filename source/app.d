@@ -1,6 +1,7 @@
 import core.exception;
 import core.stdc.stdlib;
 import std.algorithm;
+import std.conv;
 import std.file;
 import std.format;
 import std.path;
@@ -12,18 +13,23 @@ import vibe.http.fileserver;
 import vibe.http.router;
 import vibe.http.server;
 
-// Constants
 private
 {
+    // Version
     enum ver = "0.1.0";
 
+    // Errors
     enum invalidArgumentError = "ERROR: No or invalid argument(s) given. Enter 'dwttool help' for help.";
     enum invalidAmountError = "ERROR: Invalid amount of arguments given. Enter 'dwttool help' for help.";
+    enum invalidTypeError = "ERROR: %s is not a valid port number.";
     enum missingTemplateError = "ERROR: Could not find template '%s'.";
     enum createProjectError = "ERROR: %s already exists. Try another name.";
     enum createFileError = "ERROR: Could not create file %s from template %s.";
     enum readFileError = "ERROR: Could not read file %s.";
     enum readTemplateError = "ERROR: Could not read template %s.";
+
+    // Standard server port
+    ushort port = 4343;
 }
 
 // Do not indent!
@@ -42,6 +48,7 @@ private enum exampleTemplate = "
 </body>
 
 </html>";
+
 
 private void main(string[] args)
 {
@@ -109,8 +116,22 @@ private void main(string[] args)
             case "serve":
                 if (args.length == 2)
                 {
-                    serveProject;
+                    serveProject(port);
                     break;
+                }
+                if (args.length == 3)
+                {
+                    try
+                    {
+                        port = to!ushort(args[2]);
+                        serveProject(port);
+                        break;
+                    }
+                    catch (ConvException e)
+                    {
+                        writeln(format(invalidTypeError, args[2]));
+                        break;
+                    }
                 }
                 else
                 {
@@ -245,14 +266,14 @@ private void updatePage(string fileName, string templateName)
     std.file.write(fileName, fromTemplate);
 }
 
-private int serveProject()
+private int serveProject(ushort port)
 {
     writeln("Starting server...");
     writeln("Press Ctrl+C to quit.");
     auto router = new URLRouter;
     router.get("*", serveStaticFiles("."));
     auto settings = new HTTPServerSettings;
-    settings.port = 50_000;
+    settings.port = port;
     settings.bindAddresses = ["::1", "127.0.0.1"];
     listenHTTP(settings, router);
     return runEventLoop();
@@ -267,7 +288,7 @@ private void showHelp()
     writeln("  dwttool create page <page> <template>  Create new dwttool page");
     writeln("  dwttool update project <template>      Update dwttool project");
     writeln("  dwttool update page <page> <template>  Update dwttool page");
-    writeln("  dwttool serve                          Serve dwttool project on port 50000");
+    writeln("  dwttool serve [<port>]                 Serve dwttool project. Standard port is 4343");
     writeln("  dwttool version                        Get dwttool version");
     writeln("  dwttool help                           Read this text");
 }
