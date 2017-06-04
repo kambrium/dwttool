@@ -28,7 +28,7 @@ $ cd my_cool_website
 $ vim master.dwt
 // Create new HTML file from template
 $ dwttool create page index.html master.dwt
-// Run server on port 50000
+// Run server
 $ dwttool serve
 ```
 
