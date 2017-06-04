@@ -16,7 +16,7 @@ import vibe.http.server;
 private
 {
     // Version
-    enum ver = "0.1.0";
+    enum ver = "0.2.0";
 
     // Errors
     enum invalidArgumentError = "ERROR: No or invalid argument(s) given. Enter 'dwttool help' for help.";
