@@ -7,6 +7,6 @@
     "copyright": "Copyright © 2017, Martin Muehlbauer",
     "license": "MIT",
     "dependencies": {
-        "vibe-d": "~>0.8.0-beta.5"
+        "vibe-d": "~>0.9.5"
     }
 }
