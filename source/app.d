@@ -1,5 +1,7 @@
 import core.exception;
 import core.stdc.stdlib;
+import handy_httpd;
+import handy_httpd.handlers.file_resolving_handler;
 import std.algorithm;
 import std.conv;
 import std.file;
@@ -8,10 +10,7 @@ import std.path;
 import std.range;
 import std.regex;
 import std.stdio;
-import vibe.core.core;
-import vibe.http.fileserver;
-import vibe.http.router;
-import vibe.http.server;
+
 
 private
 {
@@ -266,17 +265,14 @@ private void updatePage(string fileName, string templateName)
     std.file.write(fileName, fromTemplate);
 }
 
-private int serveProject(ushort port)
+private void serveProject(ushort port)
 {
     writeln("Starting server...");
     writeln("Press Ctrl+C to quit.");
-    auto router = new URLRouter;
-    router.get("*", serveStaticFiles("."));
-    auto settings = new HTTPServerSettings;
-    settings.port = port;
-    settings.bindAddresses = ["::1", "127.0.0.1"];
-    listenHTTP(settings, router);
-    return runEventLoop();
+    ServerConfig cfg = ServerConfig.defaultValues();
+    cfg.port = port;
+    auto handler = new FileResolvingHandler(".");
+    new HttpServer(handler, cfg).start();
 }
 
 private void showHelp()
