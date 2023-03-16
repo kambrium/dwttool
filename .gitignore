@@ -8,3 +8,4 @@ __test__*__
 *.dwt
 dwttool
 dub.selections.json
+bin
