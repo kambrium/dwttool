@@ -20,8 +20,3 @@ void exitDwttool()
     writeln(exitingMsg);
     exit(2);
 }
-
-void getVersion()
-{
-    writeln("0.2.0");
-}

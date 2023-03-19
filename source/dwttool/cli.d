@@ -5,8 +5,8 @@ module dwttool.cli;
 import dwttool.core;
 import dwttool.messages;
 import dwttool.server;
-import dwttool.sharedvalues;
 import dwttool.utilities;
+import dwttool.values;
 
 import core.exception;
 import std.conv;
@@ -103,7 +103,7 @@ void handleCli(string[] args)
             case "version":
                 if (args.length == 2)
                 {
-                    getVersion;
+                    writeln(dwttoolVersion);
                     break;
                 }
                 else

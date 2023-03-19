@@ -2,7 +2,7 @@
 
 module dwttool.messages;
 
-import dwttool.sharedvalues;
+import dwttool.values;
 
 import std.format;
 
