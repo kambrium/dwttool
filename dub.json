@@ -7,7 +7,7 @@
     "copyright": "Copyright © 2017, Martin Muehlbauer",
     "license": "MIT",
     "dependencies": {
-        "handy-httpd": "~>5.6.0"
+        "handy-httpd": "~>5.6.2"
     },
     "targetPath": "bin"
 }
