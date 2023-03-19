@@ -2,6 +2,10 @@
 
 module dwttool.messages;
 
+import dwttool.sharedvalues;
+
+import std.format;
+
 enum invalidArgumentErr = "ERROR: No or invalid argument(s) given. Enter 'dwttool help' for help.";
 enum invalidAmountErr = "ERROR: Invalid amount of arguments given. Enter 'dwttool help' for help.";
 enum invalidTypeErr = "ERROR: %s is not a valid port number.";
@@ -26,7 +30,7 @@ enum string[] helpMsg = [
     "  dwttool create page <page> <template>  Create new dwttool page",
     "  dwttool update project <template>      Update dwttool project",
     "  dwttool update page <page> <template>  Update dwttool page",
-    "  dwttool serve [<port>]                 Serve dwttool project. Standard port is 4343",
+    format("  dwttool serve [<port>]                 Serve dwttool project. Standard port is %s", defaultPort),
     "  dwttool version                        Get dwttool version",
     "  dwttool help                           Read this text"
 ];

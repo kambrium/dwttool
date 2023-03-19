@@ -3,4 +3,4 @@
 module dwttool.sharedvalues;
 
 // Default port
-ushort port = 4343;
+enum defaultPort = 4343;

@@ -78,15 +78,15 @@ void handleCli(string[] args)
             case "serve":
                 if (args.length == 2)
                 {
-                    serveProject(port);
+                    serveProject(defaultPort);
                     break;
                 }
                 if (args.length == 3)
                 {
                     try
                     {
-                        port = to!ushort(args[2]);
-                        serveProject(port);
+                        ushort customPort = to!ushort(args[2]);
+                        serveProject(customPort);
                         break;
                     }
                     catch (ConvException e)
